@@ -1,6 +1,8 @@
 {
 	"java.project.sourcePaths": [
-		"src"
+		"src/1. Data Capture",
+		"src/2. Descision Making",
+		"src/3. Modular Programming"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [
