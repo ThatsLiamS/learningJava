@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class IfStatements {
 
@@ -21,18 +21,24 @@ public class IfStatements {
 
     public static void main(String[] args) {
 
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* Password.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+       
         String username = "ThatsLiamS";
         String password = "Liam090923";
 
+        /* Declare the Input Stream */
         Scanner inputScanner = new Scanner(System.in);
 
+        /* Gather user input */
         System.out.print("Enter username: ");
         String userEntry = inputScanner.nextLine();
 
         System.out.print("Enter password: ");
         String passEntry = inputScanner.nextLine();
 
+        /* Is the Data Values correct */
         if (username.equalsIgnoreCase(userEntry) == false) {
             System.out.println("\nUsername is incorrect.");
         }
@@ -41,16 +47,19 @@ public class IfStatements {
         }
         else {
             System.out.println("\nSuccessfully logged in.");
-        }
+        };
 
-
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* ChooseMonth.java */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         System.out.print("\n\nPlease enter the month number: ");
 
+        /* Declare variables */
         int month = Integer.parseInt(inputScanner.nextLine().trim().replace("\n", ""));
-
         String monthName; String seasonName; int days;
 
+        /* Which month has entered */
         if (month == 1) { monthName = "January"; seasonName = "Winter"; days = 31; }
         else if (month == 2) { monthName = "February"; seasonName = "Winter"; days = 28; }
         else if (month == 3) { monthName = "March"; seasonName = "Spring"; days = 31; }
@@ -66,14 +75,17 @@ public class IfStatements {
 
         System.out.println("That month is " + monthName + " and has " + days + " days." + "\nThe season is: " + seasonName);
 
+        /* Does the month contain the letter E */
         if (monthName.toLowerCase().contains("e")) {
             System.out.println("** Fun Fact, " + monthName + ", contains the letter 'E' **");
-        }
+        };
 
+        /* Leap year checks */
         System.out.print("\nLeap Year Checker: ");
         int yearEntry = Integer.parseInt(inputScanner.nextLine());
         System.out.print((yearEntry % 4 == 0 && yearEntry % 100 != 0) || yearEntry % 400 == 0);
 
+        /* Close the input stream */
         inputScanner.close();
     };
-}
+};

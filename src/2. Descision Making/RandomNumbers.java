@@ -12,7 +12,10 @@ public class RandomNumbers {
 
     public static void main(String[] args) {
 
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* RandomDice.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         Random r = new Random();
 
         double total = r.nextInt(6) + 1.00;
@@ -22,15 +25,20 @@ public class RandomNumbers {
 
         System.out.println("The result is: " + (total / 4.0));
 
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* SnakesAndLadders.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         Random rand = new Random();
 
+        /* Declare variables */
         boolean winner = false;
         int activePlayer = 1;
 
         int playerOne = 0;
         int playerTwo = 0;
 
+        /* While no one has won */
         while (winner == false) {
             int dice = rand.nextInt(6) + 1;
             int square = (activePlayer == 1) ? (playerOne + dice) : (playerTwo + dice);
@@ -71,4 +79,4 @@ public class RandomNumbers {
         /* Declare the winner */
         System.out.println("\n\n\nThere is a winner: " + playerOne + " vs " + playerTwo);
     };
-}
+};

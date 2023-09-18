@@ -32,10 +32,15 @@ public class Arrays {
     
     public static void main(String[] args) {
         
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* ElfNameArray.java */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        
+        /* Display a welcome message */
         System.out.println("__The Elf Name Calculator__");
         System.out.println("Simply follow the instructions below and generate your custom elf name!\n");
         
+        /* Create an array of names */
         String[] alphabetValues = {"Sparkle", "Jingle", "Happy", "Snowy", "Tinsel", "Jolly", "Bumble", "Cosmo", "Twizzle",
         "JoJo", "Pinky", "Twirly", "Zippy", "Noel", "Swirly", "Dizzy", "Minty", "Cranberry", "Crinkle", "Poppy","Tookie",
         "Merry", "Tinker", "Pepper", "Glitter", "Wiggles"};
@@ -43,8 +48,10 @@ public class Arrays {
         String[] months = {"SugarBerry", "McGiggles", "MuffinTin", "PicklePants", "PlumBottom", "SnickerDoodle",
         "Cinnabuns", "SnazzyHead", "MonkeyBerry", "TwinkleToes", "GingerPants", "BrightButtons"};
         
+        /* Create an Input Stream */
         Scanner inputScanner = new Scanner(System.in);
         
+        /* Gather User Inputs and Validate */
         int letterNum = -1;
         while (letterNum == -1 || letterNum < 0 || letterNum > 25) {
             try {
@@ -62,8 +69,10 @@ public class Arrays {
             } catch (Exception exc) { };
         };
         
+        /* Display the custom elf name based off of the inputs */
         System.out.println("\nYour elf name is: " + alphabetValues[letterNum] + " " + months[monthNum]);
  
+        /* Close the input stream */
         inputScanner.close();
     };
-}
+};

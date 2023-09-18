@@ -19,7 +19,10 @@ public class IfStatement {
 
     public static void main(String[] args) {
 
-        /* ExamGrade.java task */
+       
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+       /* ExamGrade.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         Scanner inputScanner = new Scanner(System.in);
 
        /* Input User Scores */
@@ -58,11 +61,12 @@ public class IfStatement {
             System.out.println("\nYou earned a Pass, being " + highest % 50 + " marks over.");
         } else {
             System.out.println("\nYou failed...");
-        }
+        };
 
-
-
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* RockPaperScissors.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         while (true) {
             String[] outcomes = {"Rock", "Paper", "Scissors"};
 
@@ -94,6 +98,7 @@ public class IfStatement {
             if (exitCode.equals("exit")) break;
         };
 
+        /* Close the input stream */
         inputScanner.close();
     };
-}
+};

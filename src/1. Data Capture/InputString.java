@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class InputString {
 
@@ -12,50 +12,57 @@ public class InputString {
         
         // close the scanner
         inputScanner.close();
-    }
+    };
 
     public static void main(String[] args) {
         
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* Conversation.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         Scanner inputScanner = new Scanner(System.in);
 
-        String name;
+        /* Gather user inputs */
         System.out.print("What's your name: ");
-        name = inputScanner.nextLine();
+        String name = inputScanner.nextLine();
 
         System.out.print("\nHello " + name + ", How are you? ");
         String response = inputScanner.nextLine();
 
+        /* Create a fun nickname for the user */
         System.out.println("I think I'll call you.... " + name.substring(0,3) + "gsy");
-        inputScanner.close();
 
+
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* MixedRainbow.java task */
-        Scanner inputScanner2 = new Scanner(System.in);
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         System.out.println("Enter the colors of the rainbow:");
         
-        String color1 = inputScanner2.nextLine()
+        /* Replace the letter E with A in all the colours (and alternate case) */
+        String color1 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toLowerCase();
 
-        String color2 = inputScanner2.nextLine()
+        String color2 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toUpperCase();
 
-        String color3 = inputScanner2.nextLine()
+        String color3 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toLowerCase();
 
-        String color4 = inputScanner2.nextLine()
+        String color4 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toUpperCase();
 
-        String color5 = inputScanner2.nextLine()
+        String color5 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toLowerCase();
 
-        String color6 = inputScanner2.nextLine()
+        String color6 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toUpperCase();
         
-        String color7 = inputScanner2.nextLine()
+        String color7 = inputScanner.nextLine()
             .trim().replaceAll("e", "a").toLowerCase();
 
+        /* Display all the new colours*/
         System.out.println(color1 + " " + color2 + " " + color3 + " " + color4 + " " + color5 + " " + color6 + " " + color7);
 
-        inputScanner2.close();
-    }
-}
+        /* Close the input stream */
+        inputScanner.close();
+    };
+};

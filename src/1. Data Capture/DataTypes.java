@@ -45,12 +45,17 @@ public class DataTypes {
 
     public static void main(String[] args) {
 
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* Album.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+       
+       /* Declare empty values */
         String title; String artist; String tempShopSection;
         String tempNumTracks; String tempInStock; String tempPrice;
 
         Scanner inputScanner = new Scanner(System.in);
         
+        /* Gather all user inputs without validation */
         System.out.print("Enter Title: "); title = inputScanner.nextLine();
         System.out.print("Enter Artist: "); artist = inputScanner.nextLine();
         System.out.print("Enter Shop Section: "); tempShopSection = inputScanner.nextLine();
@@ -58,6 +63,7 @@ public class DataTypes {
         System.out.print("Enter In Stock: "); tempInStock = inputScanner.nextLine();
         System.out.print("Enter Price: "); tempPrice = inputScanner.nextLine();
 
+        /* Cast specific values to the correct DataType */
         char shopSection = tempShopSection.charAt(0);
         int numTracks = Integer.parseInt(tempNumTracks);
         boolean inStock = Boolean.parseBoolean(tempInStock);
@@ -65,22 +71,26 @@ public class DataTypes {
 
         System.out.println(title + " " + artist + " " + shopSection + " " + numTracks + " " + inStock + " " + price);
         
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* PersonalData.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        
+        /* Gather user inputs */
         System.out.print("\n\nEnter Name: "); 
         String name = inputScanner.nextLine();
         System.out.print("Enter Age: "); 
         String ageTemp = inputScanner.nextLine();
 
+        /* Add DataType validation on age entry */
         try {
             int age = Integer.parseInt(ageTemp);
-
             System.out.println("Your name is: " + name + ", your age is " + age);
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             System.out.println("Woah, that age isn't a number...");
             exc.printStackTrace();
-        }
+        };
 
+        /* Close the input stream */
         inputScanner.close();
     };
-}
+};

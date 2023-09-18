@@ -2,15 +2,11 @@ import java.util.Scanner;
 
 public class ChallengePetDog {
 
-	/*
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-
 	public static void main(String[] args) {
 		
+		/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        /* Challenge - Pet Dog */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 		Scanner inputScanner = new Scanner(System.in);
 
 		/* Define Variable Types */
@@ -38,10 +34,9 @@ public class ChallengePetDog {
 			try {
 				System.out.print("Enter " + name + "'s weight (KG): ");
 				weightKG = Double.parseDouble(inputScanner.nextLine());
-			} catch (Exception exc) {
-				System.out.println("That isn't a valid double..");
-			};
+			} catch (Exception exc) { System.out.println("That isn't a valid double.."); };
 		};
+		/* Convert Kg to Lbs */
 		double weightPounds = Math.round(weightKG * 2.204623 * 100.0) / 100.0;
 
 		/* Display the dog's bio */
@@ -60,7 +55,7 @@ public class ChallengePetDog {
 				command = inputScanner.nextLine();
 			};
 		
-		
+		/* Display an action based on the command */
 		if (command.equalsIgnoreCase("sit")) { System.out.println(name + " sits patiently and waits."); }
 		else if (command.equalsIgnoreCase("speak")) { System.out.println(name + " barks loudly."); }
 		else if (command.equalsIgnoreCase("fetch")) { System.out.println(name + " runs to fetch the ball."); }
@@ -69,4 +64,4 @@ public class ChallengePetDog {
 		/* End the Scanner Stream */
 		inputScanner.close();
 	};
-}
+};

@@ -22,8 +22,10 @@ public class Output {
     };
 
     public static void main(String[] args) {
-
+        
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* HelloWorld.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         System.out.println("Hello World");
 
         System.out.println(9 / 3);
@@ -31,8 +33,10 @@ public class Output {
 
         System.out.println("Stone Roses: " + "Ian, " + "John, " + "Reni, " + "Mani");
 
-
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* AdvancedOutput.java task */
+        /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        
         String name = "Liam Skinner";
         System.out.println("Hello " + name);
 
@@ -40,4 +44,4 @@ public class Output {
         System.out.println(0b10101010);
     };
 
-}
+};
