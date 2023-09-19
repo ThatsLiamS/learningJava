@@ -17,7 +17,9 @@ public class FileWriting {
         } catch (Exception exc) { };
    
     };
-    
+
+
+    /* Declare global variables */
     Scanner inputScanner = new Scanner(System.in);
  
     String[] words = new String[10];
@@ -29,29 +31,35 @@ public class FileWriting {
         FileWriting myClass = new FileWriting();
  
         /* BasicWriter.java task */
-        myClass.methodOne();     // determine file name
-        myClass.methodTwo();     // input string data
-        myClass.methodThree();   // write data to file
+        myClass.getFileName();     // determine file name
+        myClass.getLines();     // input string data
+        myClass.writeToFile();   // write data to file
     };
     
-    public void methodOne() {
+    public void getFileName() {
+        /* UserEntry: Validation */
         while (fileName.isEmpty() || fileName.length() < 3) {
             System.out.print("Enter filename: ");
             fileName = inputScanner.nextLine().trim();
         };
     };
     
-    public void methodTwo() {
+    public void getLines() {
         boolean flag = false;
         
+        /* While array isn't full */
         while (itemsAdded < words.length && flag == false) {
             String line = "";
+
+            /* Validate user entry */
             while (line.isEmpty()) {
                 System.out.print("Enter line " + (itemsAdded + 1) + ": ");
                 line = inputScanner.nextLine().trim();
                 
                 if (line.equalsIgnoreCase("stop")) flag = true;
             };
+
+            /* Did the user ask to stop */
             if (flag == false) {
                 words[itemsAdded] = line;
                 itemsAdded += 1;
@@ -59,18 +67,21 @@ public class FileWriting {
         };
     }; 
     
-    public void methodThree() {
+    public void writeToFile() {
         try {
+            /* Open the file */
             FileWriter file = new FileWriter("src/3. Modular Programming/" + fileName + ".txt");
             
+            /* Loop through the lines and add them */
             for (int x = 0; x < itemsAdded; x++) {
                 file.write(words[x] + "\r\n");
             };
             
+            /* Close the file */
             file.close();
         } catch (Exception exc) {
             System.out.println("File Writing Error");
             // exc.printStackTrace();
-        }
+        };
     };
-} 
+};
