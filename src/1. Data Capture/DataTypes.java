@@ -20,9 +20,9 @@ public class DataTypes {
         // convert to String
         String tempInput = name; //eg. "256", "true","23.52"
 
-        int convToInt = Integer.parseInt(tempInput);
-        boolean convToBool = Boolean.parseBoolean(tempInput);
-        double convToDouble = Double.parseDouble(tempInput);
+        int convertToInt = Integer.parseInt(tempInput);
+        boolean convertToBool = Boolean.parseBoolean(tempInput);
+        double convertToDouble = Double.parseDouble(tempInput);
         char initial = tempInput.charAt(0);
 
         try {
@@ -40,7 +40,7 @@ public class DataTypes {
         }
 
         /* ## Remove Unused Error Messages */
-        System.out.print(paid + "" + age + cost + name + letter + convToInt + convToBool + convToDouble + initial);
+        System.out.print(paid + "" + age + cost + name + letter + convertToInt + convertToBool + convertToDouble + initial);
     };
 
     public static void main(String[] args) {

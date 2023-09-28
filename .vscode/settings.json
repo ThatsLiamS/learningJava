@@ -1,11 +1,18 @@
 {
 	"java.project.sourcePaths": [
 		"src/1. Data Capture",
-		"src/2. Descision Making",
+		"src/2. Decision Making",
 		"src/3. Modular Programming"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [
 		"lib/**/*.jar"
+	],
+	"cSpell.words": [
+		"Atbash", "Caeser",
+		"Cinnabuns", "Tookie", "Twizzle",
+		"colours",
+		"GCSE",
+		"Woah"
 	]
 }

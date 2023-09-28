@@ -24,7 +24,7 @@ public class ChallengePetDog {
 
 		int levelEnergy = 0;
 		while (levelEnergy < 1 || levelEnergy > 10) {
-			System.out.print("How energic is " + name + " (1-10): ");
+			System.out.print("How energetic is " + name + " (1-10): ");
 			levelEnergy = inputScanner.nextInt();
 		};
 		inputScanner.nextLine();

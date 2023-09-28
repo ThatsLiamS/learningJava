@@ -41,8 +41,10 @@ public class Validation {
 
         int mathsGrade = 0;
         while (mathsGrade < 1 || mathsGrade > 9) {
-            System.out.print("Enter name your GCSE Maths Grade: ");
-            mathsGrade = inputScanner.nextInt();
+            try {
+                System.out.print("Enter your GCSE Maths Grade: ");
+                mathsGrade = Integer.parseInt(inputScanner.nextLine());
+            } catch (Exception exc) { };
         };
 
         /* Display the validated data */

@@ -27,7 +27,8 @@ public class InputString {
 
         System.out.print("\nHello " + name + ", How are you? ");
         String response = inputScanner.nextLine();
-
+        if (response.isEmpty()) { System.out.println("Wow, no reply?..\n"); };
+    
         /* Create a fun nickname for the user */
         System.out.println("I think I'll call you.... " + name.substring(0,3) + "gsy");
 

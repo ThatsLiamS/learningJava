@@ -116,7 +116,7 @@ public class ChallengeSafeCracker {
             } catch (Exception exc) { };
         };
         
-        /* Ensure there are 3 digits - autofilled suffix 0's */
+        /* Ensure there are 3 digits - auto-filled suffix 0's */
         String numStr = Integer.toString(tempNum);
         while (numStr.length() < 3) { numStr = numStr + "0"; };
         
@@ -137,7 +137,7 @@ public class ChallengeSafeCracker {
             System.out.println("You guessed " + numCorrect + " correctly\n");
         };
 
-        /* Tenary, did they get all three */
+        /* Ternary, did they get all three */
         return (numCorrect == 3) ? true : false;
     };
 };

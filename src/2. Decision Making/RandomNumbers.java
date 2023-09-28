@@ -43,6 +43,8 @@ public class RandomNumbers {
             int dice = rand.nextInt(6) + 1;
             int square = (activePlayer == 1) ? (playerOne + dice) : (playerTwo + dice);
 
+            if (square > 30) square = 30;
+
             if (activePlayer == 1) { System.out.println(); }
             System.out.print("\nPlayer " + activePlayer + " rolled a " + dice + " and landed on square " + square);
 
@@ -74,6 +76,9 @@ public class RandomNumbers {
 
             if (square >= 30) { winner = true; };
             activePlayer = (activePlayer == 1) ? 2 : 1;
+
+            try { Thread.sleep(1000); }
+            catch (Exception exc) {};
         };
 
         /* Declare the winner */

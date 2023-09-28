@@ -41,7 +41,7 @@ public class FileReading {
  
         /* Attempt to open and read the file */
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/2. Descision Making/" + fileName + ".txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/2. Decision Making/" + fileName + ".txt"));
             
             int count = 0;
             for (String line = br.readLine(); line != null; line = br.readLine()) {

@@ -41,8 +41,8 @@ public class Calculations {
         System.out.print("Enter the Depth (1dp): "); depth = inputScanner.nextDouble();
 
         /* Display basic calculations */
-        System.out.println("The perimeter is:" + (length + width) * 2 + 'm');
-        System.out.println("The volume is:" + (length * width * depth) + "m cubed\n");
+        System.out.println("The perimeter is: " + (length + width) * 2 + 'm');
+        System.out.println("The volume is: " + (length * width * depth) + "m cubed\n");
 
         /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         /* RoundPool.java task */
