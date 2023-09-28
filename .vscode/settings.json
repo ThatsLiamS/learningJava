@@ -2,7 +2,8 @@
 	"java.project.sourcePaths": [
 		"src/1. Data Capture",
 		"src/2. Decision Making",
-		"src/3. Modular Programming"
+		"src/3. Modular Programming",
+		"src/W3 Challenges"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [
