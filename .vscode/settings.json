@@ -3,6 +3,7 @@
 		"src/1. Data Capture",
 		"src/2. Decision Making",
 		"src/3. Modular Programming",
+		"src/4. Swing GUI",
 		"src/W3 Challenges"
 	],
 	"java.project.outputPath": "bin",
@@ -10,11 +11,15 @@
 		"lib/**/*.jar"
 	],
 	"cSpell.words": [
-		"Atbash", "Caeser",
-		"Cinnabuns", "Tookie", "Twizzle",
+		"AEIOUaeiou",
+		"Atbash",
+		"Caeser",
+		"Cinnabuns",
 		"colours",
 		"GCSE",
-		"Woah",
-		"AEIOUaeiou"
+		"Tookie",
+		"Twizzle",
+		"Winstanley",
+		"Woah"
 	]
 }
