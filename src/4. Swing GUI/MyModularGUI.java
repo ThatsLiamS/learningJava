@@ -1,7 +1,10 @@
+/* Import Required Modules & Packages */
 import javax.swing.*;
 import java.awt.GridLayout;
 
 public class MyModularGUI {
+    
+    /* Declare Global Variables */
     JFrame myWindow = new JFrame("Hello Modular Swing Type Stuff!");
 
     JPanel myPanelForStuff = new JPanel(null);
@@ -12,19 +15,21 @@ public class MyModularGUI {
 
     public void buildMyModularGUI() {
 
+        /* Customize up the Window */
         myWindow.setSize(500, 400);
         myWindow.setLocation(200, 200);
         myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myWindow.setVisible(true);
         myWindow.setLayout(new GridLayout(1,1));
 
-
+        /* Method Call => Add Components to the Window */
         addSomeStuff();
 
+        /* Add the JPanel to the Window */
         myWindow.add(myPanelForStuff);
+        myWindow.setVisible(true);
     };
 
-
+    /* Method Declaration => Creates 2 Buttons*/
     public void addSomeStuff() {   
         btnTest.setSize(150, 40);
         btnTest.setLocation(40, 40);
@@ -35,8 +40,11 @@ public class MyModularGUI {
         myPanelForStuff.add(btnRealTest);
     };
 
+    /* Main Method => run the buildModularGui Func */
     public static void main(String[] args) {
-        MyModularGUI mmg = new MyModularGUI();
-        mmg.buildMyModularGUI();
+        
+        /* Method Call */
+        MyModularGUI myClass = new MyModularGUI();
+        myClass.buildMyModularGUI();
     };
 };
