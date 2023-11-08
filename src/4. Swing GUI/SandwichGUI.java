@@ -11,7 +11,19 @@ public class SandwichGUI {
 
     JPanel myPanelOne = new JPanel(null);
     JPanel myPanelTwo = new JPanel(null);
-    
+
+    /* Values for Panel Two */
+    String breadSelected = "";
+    String fillingSelected = "";
+    String sauceSelected = "";
+    String saladSelected = "";
+
+    JLabel selectedOptions = new JLabel();
+
+    JTextField loyaltyCard = new JTextField();
+    JTextField creditCard = new JTextField();
+    JTextField cvvNumber = new JTextField();
+
     /* Main Method => Run the buildGUI Function */
     public static void main(String[] args) {
         SandwichGUI myClass = new SandwichGUI();
@@ -25,12 +37,14 @@ public class SandwichGUI {
         myWindow.setSize(500, 400);
         myWindow.setLocation(500, 200);
         myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myWindow.setResizable(false);
         myWindow.setLayout(new GridLayout(1, 1));
 
-        JPanel myPanelOne = createPanelOne();
-        JPanel myPanelTwo = createPanelTwo();
+        myPanelOne = createPanelOne();
+        myPanelTwo = createPanelTwo();
 
         /* Add the Panels to a Tab */
+        JTabbedPane myTabs = new JTabbedPane();
         myTabs.addTab("Create the Sandwich", myPanelOne);
         myTabs.addTab("Order Details", myPanelTwo);
         myWindow.add(myTabs);
@@ -40,33 +54,42 @@ public class SandwichGUI {
     };
 
 
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create Panels~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    **/
+
     public JPanel createPanelOne() {
         JPanel myPanel = new JPanel(null);
 
         /* Add the Tab Title */
-        JLabel titleLabel = createLabel("Customise your Sandwich!", Color.blue, 0, 0);
+        JLabel titleLabel = createLabel("Customise your Sandwich!", Color.black, 0, 0);
         titleLabel.setBounds(140, 10, 220, 35);
-        titleLabel.setFont(new Font("Serif", Font.PLAIN, 18));
+        titleLabel.setFont(new Font("Aerial", Font.PLAIN, 18));
         myPanel.add(titleLabel);
 
+
         /* Add the Bread Options (ComboBox) */
+        breadSelected = "Flatbread";
         JLabel breadLabel = createLabel("Select your Bread!", Color.blue, 25, 75);
         myPanel.add(breadLabel);
 
         String[] breadOptions = new String[] {"Flatbread", "Italian", "Jalapeno Cheese", "Wheat"};
-        JComboBox<String> breadBox = createComboBox(breadOptions, 25, 110);
+        JComboBox<String> breadBox = createComboBox("bread", breadOptions, 25, 110);
         myPanel.add(breadBox);
 
+
         /* Add the Filling Options (ButtonGroup > RadioButton) */
+        fillingSelected = "Ham";
         JLabel fillingLabel = createLabel("Select your Filling!", Color.blue, 25, 165);
         myPanel.add(fillingLabel);
 
-        JRadioButton fillingOne = createRadioButton("Ham", 25, 195);
-        JRadioButton fillingTwo = createRadioButton("Deli Meats", 25, 220);
-        JRadioButton fillingThree = createRadioButton("Meatballs", 25, 245);
-        JRadioButton fillingFour = createRadioButton("Chicken", 25, 270);
+        JRadioButton fillingOne = createRadioButton("Ham", 25, 195, true);
+        JRadioButton fillingTwo = createRadioButton("Deli Meats", 25, 220, false);
+        JRadioButton fillingThree = createRadioButton("Meatballs", 25, 245, false);
+        JRadioButton fillingFour = createRadioButton("Chicken", 25, 270, false);
 
-        ButtonGroup myButtonGroup = new ButtonGroup();
+        ButtonGroup myButtonGroup = new ButtonGroup(); // Ensures only one option is selected
         myButtonGroup.add(fillingOne);
         myButtonGroup.add(fillingTwo);
         myButtonGroup.add(fillingThree);
@@ -77,7 +100,9 @@ public class SandwichGUI {
         myPanel.add(fillingThree);
         myPanel.add(fillingFour);
 
+
         /* Add the Salad Options (CheckBox) */
+        saladSelected = "";
         JLabel saladLabel = createLabel("Select your Salad!", Color.blue, 250, 165);
         myPanel.add(saladLabel);
 
@@ -91,12 +116,14 @@ public class SandwichGUI {
         myPanel.add(saladThree);
         myPanel.add(saladFour);
 
+
         /* Add the Sauce Options (ComboBox) */
+        sauceSelected = "None";
         JLabel sauceLabel = createLabel("Select your Sauce!", Color.blue, 250, 75);
         myPanel.add(sauceLabel);
 
         String[] sauceOptions = new String[] {"None", "Mayonnaise", "Mustard", "Ketchup"};
-        JComboBox<String> sauceBox = createComboBox(sauceOptions, 250, 110);
+        JComboBox<String> sauceBox = createComboBox("sauce", sauceOptions, 250, 110);
         myPanel.add(sauceBox);
 
 
@@ -104,20 +131,32 @@ public class SandwichGUI {
         return myPanel;
     };
 
+
     public JPanel createPanelTwo() {
         JPanel myPanel = new JPanel(null);
 
         /* Add the Tab Title */
-        JLabel titleLabel = createLabel("Order Details!", Color.blue, 0, 0);
-        titleLabel.setBounds(185, 10, 220, 35);
-        titleLabel.setFont(new Font("Serif", Font.PLAIN, 18));
+        JLabel titleLabel = createLabel("Order Details!", Color.black, 0, 0);
+        titleLabel.setBounds(155, 10, 400, 35);
+        titleLabel.setFont(new Font("Aerial", Font.PLAIN, 18));
         myPanel.add(titleLabel);
+
+
+        /* Add the Sandwich Selections */
+        selectedOptions = new JLabel();
+        selectedOptions.setBounds(60, 60, 350, 100);
+        selectedOptions.setFont(new Font("Aerial", Font.PLAIN, 15));
+        selectedOptions.setForeground(Color.black);
+
+        myPanel.add(selectedOptions);
+        formatSelectedOptions(); // Set the Default Values
+
 
         /* Add the Loyalty Card Entry */
         JLabel loyaltyLabel = createLabel("Loyalty Card:", Color.blue, 25, 160);
         myPanel.add(loyaltyLabel);
 
-        JTextField loyaltyCard = createTextField("", 25, 190);
+        loyaltyCard = createTextField("", 25, 190);
         myPanel.add(loyaltyCard);
 
 
@@ -125,7 +164,7 @@ public class SandwichGUI {
         JLabel creditLabel = createLabel("Credit Card:", Color.blue, 190, 160);
         myPanel.add(creditLabel);
 
-        JTextField creditCard = createTextField("", 190, 190);
+        creditCard = createTextField("", 190, 190);
         myPanel.add(creditCard);
 
 
@@ -133,18 +172,25 @@ public class SandwichGUI {
         JLabel cvvLabel = createLabel("CVV Number:", Color.blue, 350, 160);
         myPanel.add(cvvLabel);
 
-        JTextField cvvNumber = createTextField("", 350, 190);
+        cvvNumber = createTextField("", 350, 190);
         myPanel.add(cvvNumber);
 
 
         /* Add the Submit Button */
         JButton submitButton = createButton("Submit Order", 175, 250);
+        submitButton.addActionListener( AL -> submitButtonClicked() );
         myPanel.add(submitButton);
+
 
         /* Export the Panel */
         return myPanel;
     };
 
+
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~Create Components~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    **/
 
     public JLabel createLabel(String text, Color color, int xPos, int yPos) {
         JLabel myLabel = new JLabel(text);
@@ -154,16 +200,19 @@ public class SandwichGUI {
         return myLabel;
     };
 
-    public JComboBox<String> createComboBox(String[] options, int xPos, int yPos) {
+    public JComboBox<String> createComboBox(String type, String[] options, int xPos, int yPos) {
         JComboBox<String> myComboBox = new JComboBox<String> (options);
         myComboBox.setBounds(xPos, yPos, 120, 30);
 
+        myComboBox.addActionListener( AL -> comboBoxClicked(type, myComboBox) );
         return myComboBox;
     }
-    
-    public JRadioButton createRadioButton (String text, int xPos, int yPos) {
+
+    public JRadioButton createRadioButton(String text, int xPos, int yPos, boolean selected) {
         JRadioButton myRadioButton = new JRadioButton(text);
         myRadioButton.setBounds(xPos, yPos, 100, 25);
+        myRadioButton.setSelected(selected);
+        myRadioButton.addActionListener( AL -> radioButtonClicked(text) );
 
         return myRadioButton;
     };
@@ -171,6 +220,7 @@ public class SandwichGUI {
     public JCheckBox createCheckBox(String text, int xPos, int yPos) {
         JCheckBox myCheckBox = new JCheckBox(text);
         myCheckBox.setBounds(xPos, yPos, 100, 25);
+        myCheckBox.addActionListener( AL -> checkBoxClicked(text) );
 
         return myCheckBox;
     };
@@ -184,8 +234,110 @@ public class SandwichGUI {
 
     public JTextField createTextField(String text, int xPos, int yPos) {
         JTextField myTextField = new JTextField(text);
-        myTextField.setBounds(xPos, yPos, 90, 30);
+        myTextField.setEditable(true);
+        myTextField.setBounds(xPos, yPos, 100, 30);
 
         return myTextField;
+    };
+
+
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~Action Events~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    **/
+
+    public void formatSelectedOptions() {
+
+        String fillingFormatted = "<B>%s</B>".formatted(fillingSelected); // Makes the option BOLD
+        String sauceFormatted = ((sauceSelected.equals("None")) ? "with <B>no sauce</B>" : "and " + ("<B>" + sauceSelected + "</B>")); // "with no sauce" or "*sauce*"
+        String breadFormatted = breadSelected + ((breadSelected.equals("Flatbread")) ? "" : " Bread"); // Adds "Bread" on the end
+
+        /* Creates an "Grammatical List" of Salad Options */ 
+        String[] saladArray = saladSelected.split("[|]");
+        String saladFormatted = "";
+        if (saladArray.length == 1) {
+            saladFormatted = (saladArray[0].isEmpty() == true) ? "no salad" : saladArray[0];
+        }
+        else if (saladArray.length == 2) {
+            saladFormatted = "%s and %s".formatted(saladArray[0], saladArray[1]);
+        }
+        else if (saladArray.length == 3) {
+            saladFormatted = "%s, %s and %s".formatted(saladArray[0], saladArray[1], saladArray[2]);
+        }
+        else {
+            saladFormatted = "%s, %s, %s and %s".formatted(saladArray[0], saladArray[1], saladArray[2], saladArray[3]);
+        };
+
+        /* Compile formatted options into a Single String */
+        String formattedString = "You have selected: %s %s on %s with %s.".formatted(
+            fillingFormatted,
+            sauceFormatted,
+            "<B>" + breadFormatted + "</B>",
+            "<B>" + saladFormatted + "</B>"
+        );
+
+        /* HTML Tabs allows for automatic text wrapping */
+        selectedOptions.setText("<html>" + formattedString + "</html>");
+    };
+
+    public void comboBoxClicked(String type, JComboBox<String> myComboBox) {
+        if (type.equalsIgnoreCase("bread")) {
+            breadSelected = String.valueOf(myComboBox.getSelectedItem());
+        } else {
+            sauceSelected = String.valueOf(myComboBox.getSelectedItem());
+        }
+        formatSelectedOptions();
+    };
+
+    public void radioButtonClicked(String optionSelected) {
+        fillingSelected = optionSelected;
+        formatSelectedOptions();
+    };
+
+    public void checkBoxClicked(String option) {
+
+        /* Locate Position of "option" Within "saladSelected" */
+        int indexPoint = -1;
+        String[] saladArray = saladSelected.split("[|]");
+        for (int index = 0; index < saladArray.length; index++) {
+            if (saladArray[index].equals(option)) { indexPoint = index; };
+        };
+
+        if (indexPoint == -1) {
+            /* If Index is NotFound => SELECTED */
+            saladSelected = saladSelected + (saladSelected.length() == 0 ? "" : "|") + option;
+        } else {
+            /* If the Element Does Exist => UNSELECTED */
+            saladSelected = "";
+            for (int index = 0; index < saladArray.length; index++) {
+                if (saladArray[index].equals(option) == false) { // Skips the unselected option
+                    saladSelected = saladSelected + (saladSelected.length() == 0 ? "" : "|") + saladArray[index];
+                };
+            };
+        };
+
+        /* Format the New Selected Options */
+        formatSelectedOptions();
+    };
+
+    public void submitButtonClicked() {
+
+        /* Presence Check on the JTextFields */
+        String[] myTextFields = new String[] { loyaltyCard.getText().trim(), creditCard.getText().trim(), cvvNumber.getText().trim() };
+        String [] regexValidation = new String[] {"[A-Z]{1}\\d{6}", "\\d{4}( ?\\d{4})*", "\\d{3}" };
+        String[] contextHelp = new String [] {"The LoyaltyCard should look like: A123456", "The CreditCard should look like: 1234 1234 1234 1234", "The CVV should look like: 123" };
+
+        /* Loop through each TextField, compare the Regular Expression, and display the Warning Message */
+        for (int index = 0; index < myTextFields.length; index++) {
+            if (myTextFields[index].matches(regexValidation[index]) == false) {
+                JOptionPane.showMessageDialog(null, "Woah, enter all the details before submitting.\n" + contextHelp[index]);
+                return;
+            };
+        };
+
+        /* Reset the Window */
+        myWindow.getContentPane().removeAll();
+        myWindow.repaint();
+        buildGUI();
     };
 };
