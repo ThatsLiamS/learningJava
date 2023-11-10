@@ -6,7 +6,7 @@ public class SandwichGUI {
 
     /* Declare Global Variables */
     JFrame myWindow = new JFrame("My Sandwich Shop!");
-
+ 
     JTabbedPane myTabs = new JTabbedPane();
 
     JPanel myPanelOne = new JPanel(null);
@@ -35,7 +35,7 @@ public class SandwichGUI {
 
         /* Customize the Window */
         myWindow.setSize(500, 400);
-        myWindow.setLocation(500, 200);
+        myWindow.setLocationRelativeTo(null); // Sets the Window central on the Screen
         myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myWindow.setResizable(false);
         myWindow.setLayout(new GridLayout(1, 1));
@@ -64,7 +64,8 @@ public class SandwichGUI {
 
         /* Add the Tab Title */
         JLabel titleLabel = createLabel("Customise your Sandwich!", Color.black, 0, 0);
-        titleLabel.setBounds(140, 10, 220, 35);
+        titleLabel.setBounds(130, 20, 220, 35);
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setFont(new Font("Aerial", Font.PLAIN, 18));
         myPanel.add(titleLabel);
 
@@ -122,7 +123,7 @@ public class SandwichGUI {
         JLabel sauceLabel = createLabel("Select your Sauce!", Color.blue, 250, 75);
         myPanel.add(sauceLabel);
 
-        String[] sauceOptions = new String[] {"None", "Mayonnaise", "Mustard", "Ketchup"};
+        String[] sauceOptions = new String[] {"None", "Mayonnaise", "Mustard", "Ketchup", "Barbecue"};
         JComboBox<String> sauceBox = createComboBox("sauce", sauceOptions, 250, 110);
         myPanel.add(sauceBox);
 
@@ -137,16 +138,17 @@ public class SandwichGUI {
 
         /* Add the Tab Title */
         JLabel titleLabel = createLabel("Order Details!", Color.black, 0, 0);
-        titleLabel.setBounds(155, 10, 400, 35);
+        titleLabel.setBounds(182, 20, 400, 35);
         titleLabel.setFont(new Font("Aerial", Font.PLAIN, 18));
         myPanel.add(titleLabel);
 
 
         /* Add the Sandwich Selections */
-        selectedOptions = new JLabel();
-        selectedOptions.setBounds(60, 60, 350, 100);
+        selectedOptions = new JLabel("", JLabel.CENTER);
+        selectedOptions.setSize(350, 100);
+        selectedOptions.setLocation(65, 60);
         selectedOptions.setFont(new Font("Aerial", Font.PLAIN, 15));
-        selectedOptions.setForeground(Color.black);
+        selectedOptions.setForeground(Color.blue);
 
         myPanel.add(selectedOptions);
         formatSelectedOptions(); // Set the Default Values
@@ -248,24 +250,21 @@ public class SandwichGUI {
 
     public void formatSelectedOptions() {
 
-        String fillingFormatted = "<B>%s</B>".formatted(fillingSelected); // Makes the option BOLD
-        String sauceFormatted = ((sauceSelected.equals("None")) ? "with <B>no sauce</B>" : "and " + ("<B>" + sauceSelected + "</B>")); // "with no sauce" or "*sauce*"
+        String fillingFormatted = "<B>%s</B>".formatted(fillingSelected); // "*filling*"
+        String sauceFormatted = ((sauceSelected.equals("None")) ? "with <B>no sauce</B>" : "and " + ("<B>" + sauceSelected + "</B> sauce")); // "with no sauce" or "*sauce*"
         String breadFormatted = breadSelected + ((breadSelected.equals("Flatbread")) ? "" : " Bread"); // Adds "Bread" on the end
 
         /* Creates an "Grammatical List" of Salad Options */ 
         String[] saladArray = saladSelected.split("[|]");
         String saladFormatted = "";
-        if (saladArray.length == 1) {
+        if (saladArray.length >= 2) {
+            for (int index = 0; index < saladArray.length; index++) {
+                if (index == (saladArray.length - 1)) { saladFormatted += "and " + saladArray[index]; } // Join last element with "and *salad*"
+                else { saladFormatted += saladArray[index] + ", "; }; // Add each element (<= -2 index) with "*salad*, "
+            };
+        }
+        else { /* Either *One or No Items* of salad Selected */
             saladFormatted = (saladArray[0].isEmpty() == true) ? "no salad" : saladArray[0];
-        }
-        else if (saladArray.length == 2) {
-            saladFormatted = "%s and %s".formatted(saladArray[0], saladArray[1]);
-        }
-        else if (saladArray.length == 3) {
-            saladFormatted = "%s, %s and %s".formatted(saladArray[0], saladArray[1], saladArray[2]);
-        }
-        else {
-            saladFormatted = "%s, %s, %s and %s".formatted(saladArray[0], saladArray[1], saladArray[2], saladArray[3]);
         };
 
         /* Compile formatted options into a Single String */
@@ -285,7 +284,7 @@ public class SandwichGUI {
             breadSelected = String.valueOf(myComboBox.getSelectedItem());
         } else {
             sauceSelected = String.valueOf(myComboBox.getSelectedItem());
-        }
+        };
         formatSelectedOptions();
     };
 
@@ -330,10 +329,14 @@ public class SandwichGUI {
         /* Loop through each TextField, compare the Regular Expression, and display the Warning Message */
         for (int index = 0; index < myTextFields.length; index++) {
             if (myTextFields[index].matches(regexValidation[index]) == false) {
-                JOptionPane.showMessageDialog(null, "Woah, enter all the details before submitting.\n" + contextHelp[index]);
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(myWindow, "Woah. Enter all the details before submitting.\n" + contextHelp[index]);
                 return;
             };
         };
+
+        /* Show The User That the Order was Successful */
+        JOptionPane.showMessageDialog(myWindow, "Order has been successful.", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
         /* Reset the Window */
         myWindow.getContentPane().removeAll();
