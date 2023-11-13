@@ -49,13 +49,13 @@ public class BankAccount {
     };
 
     /* Add an Amount to the Balance */
-    public void makeDeposit(int amount) {
+    public boolean makeDeposit(int amount) {
         balance = balance + amount;
-        System.out.println("Your new balance is £" + balance + ".00");
+        return true;
     };
     
     /* Subtract an Amount from the Balance */
-    public void makeWithdrawal(int amount) {
+    public boolean makeWithdrawal(int amount) {
         balance = balance - amount;
         
         /* Compare against the MaxOverdraft Limit */
@@ -64,13 +64,18 @@ public class BankAccount {
                 amount, maxOverdraft
             ));
             balance = balance + amount;
-            return;
-        }
-        System.out.println("Your new balance is £" + balance + ".00");
+            return false;
+        };
+        
+        return true;
     };
 
     /* Fetch the Value of the Balance */
     public int getBalance() {
         return balance;
+    };
+    /* Set the Value of the Balance */
+    public void setBalance(int amount) {
+        balance = amount;
     };
 };
