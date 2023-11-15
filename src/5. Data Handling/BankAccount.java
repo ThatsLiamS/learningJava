@@ -5,7 +5,7 @@ public class BankAccount {
 
     /* Declare Global Variables */
     public String accountNumber;
-    public String sortCode ;
+    public String sortCode;
     private int balance = 0;
     public int maxOverdraft = -1000;
     public char userType = 'C';
@@ -14,7 +14,7 @@ public class BankAccount {
         /* Reset These Values */
         accountNumber = "";
         sortCode = "";
-        
+
         Scanner inputScanner = new Scanner(System.in);
 
         /* Enter AccountNumber as 8 Digits: 12345678 */
@@ -36,7 +36,7 @@ public class BankAccount {
         maxOverdraft = -1000;
         userType = 'C';
     };
-    
+
     /* Return a Comma Separation List of the Attributes */
     public String toString() {
         return "%s,%s,%s,%s,%s".formatted(
@@ -53,11 +53,11 @@ public class BankAccount {
         balance = balance + amount;
         return true;
     };
-    
+
     /* Subtract an Amount from the Balance */
     public boolean makeWithdrawal(int amount) {
         balance = balance - amount;
-        
+
         /* Compare against the MaxOverdraft Limit */
         if (balance < maxOverdraft) {
             System.out.println("You cannot withdraw £%s and go past the £%s overdraft...".formatted(
@@ -66,7 +66,7 @@ public class BankAccount {
             balance = balance + amount;
             return false;
         };
-        
+
         return true;
     };
 
