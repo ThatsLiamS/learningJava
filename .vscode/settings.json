@@ -5,6 +5,8 @@
 		"src/3. Modular Programming",
 		"src/4. Swing GUI",
 		"src/5. Data Handling",
+		"src/6. Easter Project/src",
+		"src/6. Easter Project/unit tests",
 		"src/W3 Challenges"
 	],
 	"java.project.outputPath": "bin",
