@@ -5,7 +5,7 @@ public class CustomSong extends Song {
 
     /* NoParameter Constructor */
     public CustomSong() {
-        super.setType( 'C' );
+        super.setType('C' );
     };
 
 
@@ -14,8 +14,13 @@ public class CustomSong extends Song {
         return genre;
     };
     public boolean setGenre(String genre) {
-        this.genre = genre;
-        return true;
+        /* String value, between 1 and 20 length, only consists of Characters */
+        if (genre.matches("^[a-zA-Z]{1,20}$") == true) {
+            this.genre = genre;
+            return true;
+        };
+
+        return false;
     };
 
 

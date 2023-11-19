@@ -20,20 +20,25 @@ public class Database {
         CustomSong mySong = new CustomSong();
 
         /* Set the Appropriate Values */
-        mySong.setArtist(artist);
-        mySong.setName(name);
+        boolean artistBoolean = mySong.setArtist(artist);
+        boolean nameBoolean = mySong.setName(name);
 
-        mySong.setDuration(duration);
-        mySong.setRating(rating);
-        mySong.setTotalListens(totalListens);
+        boolean durationBoolean = mySong.setDuration(duration);
+        boolean ratingBoolean = mySong.setRating(rating);
+        boolean listensBoolean = mySong.setTotalListens(totalListens);
 
-        mySong.setGenre(genre);
+        boolean genreBoolean = mySong.setGenre(genre);
 
-        /* Add the new Song to the Array */
-        allSongs[totalSongs] = mySong;
-        totalSongs++;
+        /* Did all the Attributes Set Correctly */
+        if (artistBoolean && nameBoolean && durationBoolean && ratingBoolean && listensBoolean && genreBoolean) {
+            /* Add the new Song to the Array */
+            allSongs[totalSongs] = mySong;
+            totalSongs++;
 
-        return true;
+            return true;
+        };
+
+        return false;
     };
 
 
@@ -201,7 +206,16 @@ public class Database {
     };
 
 
-    /* Import Songs from TXT (CVS) File ~with Decryption~ */
+    /* Import Songs from TXT (CVS) File with Decryption */
+    private String decrypt(String encryptedData) {
+        String plainData = "";
+
+        for (int index = 0; index < encryptedData.length(); index++) {
+            int ascii = encryptedData.charAt(index) + 5; // Caeser Shift + 5
+            plainData = plainData + (char)ascii;
+        };
+        return plainData;
+    };
     public boolean importAllSongs() {
         allSongs = new Song[125];
         totalSongs = 0;
@@ -211,7 +225,10 @@ public class Database {
             /* Loop through Every Record in the File */
             
             for (String line = myFile.readLine(); line != null; line = myFile.readLine()) {
-                String[] data = line.split(",");
+
+                /* Decrypt the Data and Split into Attributes */
+                String plainData = decrypt(line);
+                String[] data = plainData.split(",");
                 Song mySong;
     
                 /* PreExisting Song */
@@ -245,6 +262,15 @@ public class Database {
 
 
     /* Export Songs to TXT (CVS) File ~with Encryption~ */
+    private String encrypt(String plainData) {
+        String encryptedData = "";
+
+        for (int index = 0; index < plainData.length(); index++) {
+            int ascii = plainData.charAt(index) - 5; // Caeser Shift - 5
+            encryptedData = encryptedData + (char)ascii;
+        };
+        return encryptedData;
+    };
     public boolean exportAllSongs() {
 
         try (FileWriter myFile = new FileWriter("SongList.txt", false)) {
@@ -252,7 +278,7 @@ public class Database {
             /* Loop through Records in the Array */
             for (int index = 0; index < totalSongs; index++) {
                 Song mySong = allSongs[index];
-                myFile.write(mySong.toString() + "\r\n");
+                myFile.write(encrypt(mySong.toString()) + "\r\n");
             };
 
             return true;
