@@ -1,6 +1,8 @@
+import java.io.FileWriter;
+
 /**
  * This class conforms to the regulations set forth within the
- * "Bank Project" EBook's Day 2 Task.
+ * "Bank Project" EBook's Day 2 & 3 Task.
  * 
  * @author Liam Skinner
  * 
@@ -27,7 +29,7 @@ public class AccountList
 			System.out.println(stringAccount);
 		}
 	}
-	
+
 	/**
 	 * Polymorphism
 	 * 
@@ -41,8 +43,32 @@ public class AccountList
 		String stringAccount = allAccounts[indexPoint].toString();
 		System.out.println(stringAccount);
 	}
-	
-	
+
+
+	/**
+	 * This method will interate over every non-null value of the
+	 * allAccounts array, and export the toString() value of each
+	 * to the BankAccountDB file.
+	 */
+	public void exportAccounts()
+	{
+		try {
+			FileWriter file = new FileWriter("BankAccountDB.txt");
+		
+			// Interates over all non-null elements
+			for (int index = 0; index < currentIndex; index++)
+			{
+				String stringAccount = allAccounts[index].toStringEncrypted();
+				file.write(stringAccount + "\r\n");
+			}
+		}
+		catch (Exception exc)
+		{
+			System.out.println("exportAccounts: file writing error");
+		}
+	}
+
+
 	/**
 	 * This method will take BankAccount parameter, and add it to the
 	 * next non-null element of the array.
@@ -76,7 +102,7 @@ public class AccountList
 		allAccounts[currentIndex] = newAccount;
 		currentIndex++;
 	}
-	
+
 	/**
 	 * This method used within the addAccountToList() as validation,
 	 * it will return the string combination of the AccountNumber and

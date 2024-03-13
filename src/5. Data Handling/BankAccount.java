@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.io.FileWriter;
+
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 /**
  * This class conforms to the regulations set forth within the
@@ -75,7 +79,52 @@ public class BankAccount
 
 		return true;
 	}
+	
+	
+	
+	/**
+	 * This method will deposit an amount into
+	 * the user's balance and will record the
+	 * transaction in a BankStatement file.
+	 * 
+	 * @param     Amount to be deposited
+	 * @return    Deposit Successful Flag
+	 */
+	public boolean evidencedDeposit(int amount)
+	{
+		boolean status = debugMakeDeposit(amount);
+		
+		if (status == false)
+		{
+			System.out.println("evidencedDeposit: unsuccessful ~ invalid amount provided");
+			return false;
+		}
+		
+		try {
+			FileWriter file = new FileWriter("BankStatements.txt", true);
+			
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+			LocalDateTime currentTime = LocalDateTime.now();
 
+			
+			String statement = "%s  ~~  Deposit: £%s  ~~  Balance: £%s".formatted(
+				dateFormatter.format(currentTime),
+				amount,
+				balance
+			);
+			
+			file.write(statement);
+			file.close();
+			
+			return true;
+		}
+		catch(Exception exc)
+		{
+			System.out.println("evidencedDeposit: file writer error");
+			return false;
+		}
+	}
+	
 
 	/**
 	 * DEBUG METHOD
@@ -99,7 +148,7 @@ public class BankAccount
 
 		return true;
 	}
-	
+
 	/**
 	 * DEBUG METHOD
 	 * 
@@ -127,8 +176,8 @@ public class BankAccount
 		System.out.println("debugMakeWithdrawal: balance is now £" + balance);
 		return true;
 	}
-	
-	
+
+
 	/**
 	 * DEBUG METHOD
 	 * 
@@ -160,8 +209,8 @@ public class BankAccount
 		maxOverdraft = -1000;
 		userType = 'C';
 	}
-	
-	
+
+
 	/**
 	 * This method will return a string value, of each
 	 * global variable concatenated with a comma seperator.
@@ -174,6 +223,23 @@ public class BankAccount
 			balance,
 			maxOverdraft,
 			userType
+		);
+	}
+
+	/**
+	 * This method will return a string value, of each
+	 * global variable concatenated with a comma seperator.
+	 */
+	public String toStringEncrypted()
+	{
+		CaesarCipher cipher = new CaesarCipher();
+
+		return "%s,%s,%s,%s,%s".formatted(
+			cipher.encrypt(accountNumber),
+			cipher.encrypt(sortCode),
+			cipher.encrypt(balance),
+			cipher.encrypt(maxOverdraft),
+			cipher.encrypt(userType)
 		);
 	}
 }
